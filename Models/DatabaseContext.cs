@@ -8,6 +8,8 @@ namespace StackOverflowApi.Models
   public partial class DatabaseContext : DbContext
   {
 
+    public DbSet<QuestionPost> QuestionPosts { get; set; }
+
     private string ConvertPostConnectionToConnectionString(string connection)
     {
       var _connection = connection.Replace("postgres://", String.Empty);
