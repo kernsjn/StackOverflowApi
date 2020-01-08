@@ -35,7 +35,7 @@ namespace StackOverflowApi.Controllers
     {
       return await _context.AnswersPost.ToListAsync();
     }
-
+    [HttpPost("CreateAnswer")]
     public ActionResult<AnswersPost> CreateAnswer([FromBody]AnswersVM entry)
     {
       if (_context.QuestionPosts.Any(a => a.Id == entry.QuestionPostId))
