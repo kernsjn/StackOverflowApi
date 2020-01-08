@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using StackOverflowApi.Models;
 
 namespace StackOverFlow.Models
 {
