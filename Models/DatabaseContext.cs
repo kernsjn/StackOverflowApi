@@ -10,6 +10,7 @@ namespace StackOverflowApi.Models
   {
 
     public DbSet<QuestionPost> QuestionPosts { get; set; }
+    public DbSet<AnswersPost> AnswersPosts { get; set; }
 
     private string ConvertPostConnectionToConnectionString(string connection)
     {
