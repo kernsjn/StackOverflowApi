@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using StackOverFlow.Models;
 
 namespace StackOverflowApi.Models
 {
@@ -30,6 +31,8 @@ namespace StackOverflowApi.Models
         optionsBuilder.UseNpgsql(conn);
       }
     }
+
+    public DbSet<StackOverFlow.Models.AnswersPost> AnswersPost { get; set; }
 
 
 
