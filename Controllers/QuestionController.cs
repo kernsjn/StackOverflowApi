@@ -42,9 +42,9 @@ namespace StackOverflowApi.Controllers
     }
 
     [HttpGet("searchterm/{content}")]
-    public async Task<ActionResult<QuestionPost>> SearchQuestionPost(int id)
+    public async Task<ActionResult<QuestionPost>> SearchQuestionPost(string content)
     {
-      var questionPost = await _context.QuestionPosts.FindAsync(id);
+      var questionPost = await _context.QuestionPosts.FindAsync(content);
 
       if (questionPost == null)
       {
@@ -68,8 +68,17 @@ namespace StackOverflowApi.Controllers
       return entry;
     }
 
-    [HttpPut("numberOfViews/{Id}")]
-    public ActionResult<Int32> postViews(int Id)
+    [HttpPut("upvote/{Id}")]
+    public ActionResult<Int32> upVoteQuestion(int Id)
+    {
+      var question = _context.QuestionPosts.FirstOrDefault(f => f.Id == Id);
+      question.NumberOfViews += 1;
+      _context.SaveChanges();
+      return question.NumberOfViews;
+    }
+
+    [HttpPut("downvote/{Id}")]
+    public ActionResult<Int32> downVoteQuestion(int Id)
     {
       var question = _context.QuestionPosts.FirstOrDefault(f => f.Id == Id);
       question.NumberOfViews += 1;

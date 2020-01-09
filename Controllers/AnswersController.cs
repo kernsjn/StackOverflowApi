@@ -30,6 +30,24 @@ namespace StackOverflowApi.Controllers
       return entry;
     }
 
+    // [HttpPut("upvote/{Id}")]
+    // public ActionResult<Int32> upVoteAnswer(int Id)
+    // {
+    //   var answer = _context.AnswersPosts.FirstOrDefault(f => f.Id == Id);
+    //   answer.NumberOfViews += 1;
+    //   _context.SaveChanges();
+    //   return answer.NumberOfViews;
+    // }
+
+    //  [HttpPut("downvote/{Id}")]
+    // public ActionResult<Int32> downVoteAnswer(int Id)
+    // {
+    //   var answer = _context.AnswersPosts.FirstOrDefault(f => f.Id == Id);
+    //   answer.NumberOfViews += 1;
+    //   _context.SaveChanges();
+    //   return answer.NumberOfViews;
+    // }
+
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AnswersPost>>> GetAnswersPost()
     {
