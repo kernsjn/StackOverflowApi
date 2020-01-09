@@ -55,6 +55,21 @@ namespace StackOverflowApi.Controllers
       }
     }
 
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<AnswersPost>> DeleteAnswer(int id)
+    {
+      var answer = await _context.AnswersPost.FindAsync(id);
+      if (answer == null)
+      {
+        return NotFound();
+      }
+
+      _context.AnswersPost.Remove(answer);
+      await _context.SaveChangesAsync();
+
+      return answer;
+    }
+
     private bool AnswersPostExists(int id)
     {
       return _context.AnswersPost.Any(e => e.Id == id);

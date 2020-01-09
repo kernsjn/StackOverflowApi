@@ -73,6 +73,21 @@ namespace StackOverflowApi.Controllers
       return CreatedAtAction("GetQuestionPost", new { id = questionPost.Id }, questionPost);
     }
 
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<QuestionPost>> DeleteQuestion(int id)
+    {
+      var question = await _context.QuestionPosts.FindAsync(id);
+      if (question == null)
+      {
+        return NotFound();
+      }
+
+      _context.QuestionPosts.Remove(question);
+      await _context.SaveChangesAsync();
+
+      return question;
+    }
+
     private bool QuestionPostExists(int id)
     {
       return _context.QuestionPosts.Any(e => e.Id == id);
