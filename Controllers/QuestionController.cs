@@ -41,7 +41,7 @@ namespace StackOverflowApi.Controllers
       return questionPost;
     }
 
-    [HttpGet("searchterm")]
+    [HttpGet("searchterm/{content}")]
     public async Task<ActionResult<QuestionPost>> SearchQuestionPost(int id)
     {
       var questionPost = await _context.QuestionPosts.FindAsync(id);
