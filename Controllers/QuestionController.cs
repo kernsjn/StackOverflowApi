@@ -41,6 +41,19 @@ namespace StackOverflowApi.Controllers
       return questionPost;
     }
 
+    [HttpGet("searchterm")]
+    public async Task<ActionResult<QuestionPost>> SearchQuestionPost(int id)
+    {
+      var questionPost = await _context.QuestionPosts.FindAsync(id);
+
+      if (questionPost == null)
+      {
+        return NotFound();
+      }
+
+      return questionPost;
+    }
+
     [HttpGet("AllAnswersJoin/{Id}")]
     public ActionResult<IEnumerable<Object>> GetQuestionAnswers(int Id)
     {
