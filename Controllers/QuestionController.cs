@@ -41,10 +41,10 @@ namespace StackOverflowApi.Controllers
       return questionPost;
     }
 
-    [HttpGet("searchterm/{content}")]
-    public async Task<ActionResult<QuestionPost>> SearchQuestionPost(string content)
+    [HttpGet("searchterm/{description}")]
+    public async Task<ActionResult<QuestionPost>> SearchQuestionPost(string description)
     {
-      var questionPost = await _context.QuestionPosts.FindAsync(content);
+      var questionPost = await _context.QuestionPosts.FindAsync(description);
 
       if (questionPost == null)
       {
