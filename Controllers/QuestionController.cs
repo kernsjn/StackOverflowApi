@@ -42,16 +42,12 @@ namespace StackOverflowApi.Controllers
     }
 
     [HttpGet("searchterm/{description}")]
-    public async Task<ActionResult<QuestionPost>> SearchQuestionPost(string description)
+    public async Task<ActionResult> SearchQuestionPost(string description)
     {
-      var questionPost = await _context.QuestionPosts.FirstOrDefaultAsync(f=> f.Description == description);
+      var questionPost = _context.QuestionPosts.Where(question => question.Description == description);
 
-      if (questionPost == null)
-      {
-        return NotFound();
-      }
 
-      return questionPost;
+      return Ok(await questionPost.ToListAsync());
     }
 
     [HttpGet("AllAnswersJoin/{Id}")]
