@@ -68,18 +68,18 @@ namespace StackOverflowApi.Controllers
     public ActionResult<Int32> upVoteQuestion(int Id)
     {
       var question = _context.QuestionPosts.FirstOrDefault(f => f.Id == Id);
-      question.NumberOfViews += 1;
+      question.UpVoteQuestion += 1;
       _context.SaveChanges();
-      return question.NumberOfViews;
+      return question.UpVoteQuestion;
     }
 
     [HttpPut("downvote/{Id}")]
     public ActionResult<Int32> downVoteQuestion(int Id)
     {
       var question = _context.QuestionPosts.FirstOrDefault(f => f.Id == Id);
-      question.NumberOfViews += 1;
+      question.DownVoteQuestion += 1;
       _context.SaveChanges();
-      return question.NumberOfViews;
+      return question.DownVoteQuestion;
     }
 
     [HttpPost]
