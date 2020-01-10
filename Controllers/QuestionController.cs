@@ -44,7 +44,7 @@ namespace StackOverflowApi.Controllers
     [HttpGet("searchterm/{description}")]
     public async Task<ActionResult<QuestionPost>> SearchQuestionPost(string description)
     {
-      var questionPost = await _context.QuestionPosts.FindAsync(description);
+      var questionPost = await _context.QuestionPosts.FirstOrDefaultAsync(f=> f.Description == description);
 
       if (questionPost == null)
       {
