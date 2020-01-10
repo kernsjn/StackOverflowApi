@@ -30,23 +30,23 @@ namespace StackOverflowApi.Controllers
       return entry;
     }
 
-    // [HttpPut("upvote/{Id}")]
-    // public ActionResult<Int32> upVoteAnswer(int Id)
-    // {
-    //   var answer = _context.AnswersPosts.FirstOrDefault(f => f.Id == Id);
-    //   answer.NumberOfViews += 1;
-    //   _context.SaveChanges();
-    //   return answer.NumberOfViews;
-    // }
+    [HttpPut("upvote/{Id}")]
+    public ActionResult<Int32> upVoteAnswer(int Id)
+    {
+      var answer = _context.AnswersPosts.FirstOrDefault(f => f.Id == Id);
+      answer.UpVoteAnswer += 1;
+      _context.SaveChanges();
+      return answer.UpVoteAnswer;
+    }
 
-    //  [HttpPut("downvote/{Id}")]
-    // public ActionResult<Int32> downVoteAnswer(int Id)
-    // {
-    //   var answer = _context.AnswersPosts.FirstOrDefault(f => f.Id == Id);
-    //   answer.NumberOfViews += 1;
-    //   _context.SaveChanges();
-    //   return answer.NumberOfViews;
-    // }
+    [HttpPut("downvote/{Id}")]
+    public ActionResult<Int32> downVoteAnswer(int Id)
+    {
+      var answer = _context.AnswersPosts.FirstOrDefault(f => f.Id == Id);
+      answer.DownVoteAnswer += 1;
+      _context.SaveChanges();
+      return answer.DownVoteAnswer;
+    }
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AnswersPost>>> GetAnswersPost()

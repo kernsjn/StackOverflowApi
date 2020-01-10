@@ -10,7 +10,9 @@ namespace StackOverFlow.Models
 
     public string AnswerContent { get; set; }
 
-    public int UpDownVoteAnswer { get; set; }
+    public int UpVoteAnswer { get; set; }
+
+    public int DownVoteAnswer { get; set; }
 
     public DateTime DateOfPost { get; set; } = DateTime.UtcNow;
 

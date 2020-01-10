@@ -10,7 +10,8 @@ namespace StackOverflowApi.Models
     public string Description { get; set; }
     public int NumberOfViews { get; set; }
     public string Content { get; set; }
-    public int UpDownVoteQuestion { get; set; }
+    public int UpVoteQuestion { get; set; }
+    public int DownVoteQuestion { get; set; }
     public DateTime DateOfPost { get; set; } = DateTime.UtcNow;
     public List<AnswersPost> AnswersPosts { get; set; } = new List<AnswersPost>();
   }
